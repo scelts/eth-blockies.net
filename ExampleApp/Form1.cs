@@ -87,5 +87,12 @@ namespace ExampleApp
                 mainImage.Save(saveFileDialog.FileName, ImageFormat.Png);
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Identicon identicon = new Identicon(textBox1.Text.Trim(), 8);
+            int size = Convert.ToInt32(textBox2.Text);
+            this.Icon = identicon.GetIcon(64);
+        }
     }
 }
