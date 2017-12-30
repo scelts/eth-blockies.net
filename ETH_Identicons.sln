@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETH_Identicons", "ETH_Identicons\ETH_Identicons.csproj", "{C5736CF5-9AB0-4DB5-AF90-6A414A90B14F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{B255C6F3-C491-45AE-84CF-45EA88C86B5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C5736CF5-9AB0-4DB5-AF90-6A414A90B14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5736CF5-9AB0-4DB5-AF90-6A414A90B14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5736CF5-9AB0-4DB5-AF90-6A414A90B14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B255C6F3-C491-45AE-84CF-45EA88C86B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B255C6F3-C491-45AE-84CF-45EA88C86B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B255C6F3-C491-45AE-84CF-45EA88C86B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B255C6F3-C491-45AE-84CF-45EA88C86B5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
