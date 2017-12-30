@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using ETH_Identicons;
 using System.Diagnostics;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace ExampleApp
 {
@@ -54,6 +56,36 @@ namespace ExampleApp
                 identicon.GetBitmap(size).Save(saveFileDialog.FileName);
                 Process.Start(saveFileDialog.FileName);
             }  
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string[] addresses =
+            {
+                "0x3db4B1Be10b0D39D3A0f2140aEd6Be5b79213453",
+                "0x50D857764C66fB7E15eFafeF63a46AF4604D092C",
+                "0x55affd5041F689a6D020545c8C97ecEFAD4f6AAe",
+                "0x97D159383E6C66c32F89a5f08c105a52D5D5EA2C",
+                "0x2512cCAEb46C5A62092056Da7735769A5760aBC6"
+            };
+            int size = 64;
+            int space = 32;
+            Bitmap mainImage = new Bitmap(size * 5 + space * 4, size);
+            using (Graphics g = Graphics.FromImage(mainImage))
+            {
+                int pos = 0;
+                foreach (var address in addresses)
+                {
+                    var identicon = new Identicon(address, 8);
+                    g.DrawImage(identicon.GetBitmap(size), pos, 0);
+                    pos += size + space;
+                }
+            }
+            saveFileDialog.Filter = "Png (*.png)|*.png";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                mainImage.Save(saveFileDialog.FileName, ImageFormat.Png);
+            }
         }
     }
 }
