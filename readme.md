@@ -1,10 +1,10 @@
-# ETH_Identicons.net
+# ETH_Blockies.net
 
 ![Sample blockies image](sample.png "Blockies")
 
-.net (c#) port to generate identicons from the ethereum address, like the ones used in Mist ir etherscan or similar...
+.net (c#) port to generate identicons from the ethereum address, like the ones used in Mist or etherscan or similar...
 1:1 copy of the "official" implementation [https://github.com/ethereum/blockies](https://github.com/ethereum/blockies), written in c#
-[pre-built dll](ETH_Identicons/ETH_Identicons/bin/Release/ETH_Identicons.dll)
+
 
 ### Example usage
 
@@ -20,7 +20,7 @@ Or just look at the ExampleApp included with the Solution...
 
 ### Licence
 
-[Same as original](http://www.wtfpl.net/)
+[Same as the original](http://www.wtfpl.net/)
 
 
 
