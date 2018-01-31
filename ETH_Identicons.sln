@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETH_Identicons", "ETH_Identicons\ETH_Identicons.csproj", "{C5736CF5-9AB0-4DB5-AF90-6A414A90B14F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{B255C6F3-C491-45AE-84CF-45EA88C86B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp.WPF", "ExampleApp.WPF\ExampleApp.WPF.csproj", "{14BC315E-D565-48C7-A1BE-9EBB33D8134E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{B255C6F3-C491-45AE-84CF-45EA88C86B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B255C6F3-C491-45AE-84CF-45EA88C86B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B255C6F3-C491-45AE-84CF-45EA88C86B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14BC315E-D565-48C7-A1BE-9EBB33D8134E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14BC315E-D565-48C7-A1BE-9EBB33D8134E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14BC315E-D565-48C7-A1BE-9EBB33D8134E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14BC315E-D565-48C7-A1BE-9EBB33D8134E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA858EBD-D766-442E-ADFF-1BF381CC9745}
 	EndGlobalSection
 EndGlobal
