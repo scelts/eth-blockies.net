@@ -1,0 +1,165 @@
+﻿<Window
+    x:Class="ExampleApp.WPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="clr-namespace:ExampleApp.WPF"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:infra="clr-namespace:ExampleApp.WPF.Infra"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Identicon Example"
+    Width="525"
+    Height="220"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <app:MainWindowViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+
+        <Style TargetType="Button">
+            <Setter Property="MinWidth" Value="80" />
+            <Setter Property="Padding" Value="5,2" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Border
+                                x:Name="errorBorder"
+                                Background="#11FF0000"
+                                BorderBrush="Red"
+                                BorderThickness="1"
+                                IsHitTestVisible="False" />
+                            <AdornedElementPlaceholder x:Name="placeholder" />
+                            <Popup
+                                HorizontalAlignment="Right"
+                                AllowsTransparency="True"
+                                HorizontalOffset="0"
+                                IsOpen="{Binding ElementName=placeholder, Path=AdornedElement.IsFocused, Mode=OneWay}"
+                                Placement="Right"
+                                PlacementTarget="{Binding ElementName=errorBorder}"
+                                PopupAnimation="Fade"
+                                VerticalOffset="0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Polygon
+                                        VerticalAlignment="Center"
+                                        Fill="Red"
+                                        Points="0,4 4,0 4,8"
+                                        Stretch="Fill"
+                                        Stroke="Red"
+                                        StrokeThickness="2" />
+                                    <Border
+                                        Padding="4"
+                                        Background="Red"
+                                        CornerRadius="4">
+                                        <TextBlock
+                                            Margin="2,0,0,0"
+                                            HorizontalAlignment="Center"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            Text="{Binding ElementName=placeholder, Path=AdornedElement.ToolTip, Mode=OneWay}" />
+                                    </Border>
+                                </StackPanel>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+    <StackPanel Margin="3" Orientation="Vertical">
+
+        <Grid Margin="10,0,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Content="ETH Address (with 0x):" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Content="Icon Size (px):" />
+
+            <TextBox
+                Grid.Row="0"
+                Grid.Column="1"
+                Width="300"
+                Margin="2"
+                HorizontalAlignment="Left"
+                VerticalContentAlignment="Center"
+                Text="{Binding Address, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="100"
+                Margin="2"
+                HorizontalAlignment="Left"
+                VerticalContentAlignment="Center"
+                Text="{Binding IconSixePx, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged, Delay=350}" />
+
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+            <Button Command="{Binding GenerateBitmapCommand}">Generate Bitmap</Button>
+
+            <Button Command="{Binding GenerateIconCommand}">Generate Icon</Button>
+
+            <Button Command="{Binding SaveBitmapCommand}" Content="Save Bitmap">
+                <i:Interaction.Behaviors>
+                    <infra:SaveFileDialogBehaviour FileName="{Binding SaveFileName, Mode=OneWayToSource}" FileTypesFilter="Bitmap (*.bmp)|*.bmp" />
+                </i:Interaction.Behaviors>
+            </Button>
+
+            <Button Command="{Binding SaveIconCommand}" Content="Save Icon">
+                <i:Interaction.Behaviors>
+                    <infra:SaveFileDialogBehaviour FileName="{Binding SaveFileName, Mode=OneWayToSource}" FileTypesFilter="Icon (*.ico)|*.ico" />
+                </i:Interaction.Behaviors>
+            </Button>
+
+            <Button Command="{Binding SavePngCommand}" Content="Save png">
+                <i:Interaction.Behaviors>
+                    <infra:SaveFileDialogBehaviour FileName="{Binding SaveFileName, Mode=OneWayToSource}" FileTypesFilter="Png (*.png)|*.png" />
+                </i:Interaction.Behaviors>
+            </Button>
+
+        </StackPanel>
+
+
+        <Image
+            Width="{Binding IdenticonImage.Width}"
+            Height="{Binding IdenticonImage.Height}"
+            Margin="20,10,0,0"
+            HorizontalAlignment="Left"
+            Source="{Binding IdenticonImage}" />
+
+    </StackPanel>
+
+</Window>
